@@ -15,7 +15,6 @@ import org.testfx.matcher.control.TextInputControlMatchers;
 
 import java.io.IOException;
 
-@Disabled
 @ExtendWith(ApplicationExtension.class)
 class AppTest {
     App a;
