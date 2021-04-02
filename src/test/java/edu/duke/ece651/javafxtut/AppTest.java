@@ -4,6 +4,7 @@
 package edu.duke.ece651.javafxtut;
 
 import javafx.stage.Stage;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxAssert;
@@ -14,6 +15,7 @@ import org.testfx.matcher.control.TextInputControlMatchers;
 
 import java.io.IOException;
 
+@Disabled
 @ExtendWith(ApplicationExtension.class)
 class AppTest {
     App a;

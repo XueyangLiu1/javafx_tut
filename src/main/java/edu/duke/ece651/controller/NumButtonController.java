@@ -1,5 +1,6 @@
 package edu.duke.ece651.controller;
 
+import edu.duke.ece651.model.RPNStack;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,5 +19,22 @@ public class NumButtonController {
         else {
             throw new IllegalArgumentException("Invalid source " + source + " for ActionEvent");
         }
+    }
+
+    RPNStack model;
+    public NumButtonController(RPNStack model){
+        this.model = model;
+    }
+
+    void pushCurrentNumIfAny(){
+        String s = currentNumber.getText().trim();
+        if(!s.equals("")){
+            double d = Double.parseDouble(s);
+            model.pushNum(d);
+        }
+        currentNumber.setText("");
+    }
+    public void onEnter(ActionEvent ae){
+        pushCurrentNumIfAny();
     }
 }

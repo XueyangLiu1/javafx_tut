@@ -15,7 +15,7 @@ import java.net.URL;
 public class App extends Application {
   @Override
   public void start(Stage stage) throws IOException {
-    URL xmlResource = getClass().getResource("/ui/calcbuttons.xml");
+    URL xmlResource = getClass().getResource("/ui/calc-split.xml");
     GridPane gp = FXMLLoader.load(xmlResource);
     Scene scene = new Scene(gp,640,480);
     URL cssResource = getClass().getResource("/ui/calcbuttons.css");
