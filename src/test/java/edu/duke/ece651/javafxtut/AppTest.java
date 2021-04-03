@@ -11,6 +11,7 @@ import org.testfx.api.FxAssert;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
+import org.testfx.matcher.control.ListViewMatchers;
 import org.testfx.matcher.control.TextInputControlMatchers;
 
 import java.io.IOException;
@@ -36,6 +37,9 @@ class AppTest {
                 robot.clickOn(""+digit);
             }
         }
-        FxAssert.verifyThat("#currentNumber", TextInputControlMatchers.hasText(str));
+        robot.clickOn("#Enter");
+        FxAssert.verifyThat("#rpnstack", ListViewMatchers.hasItems(1));
+        FxAssert.verifyThat("#rpnstack", ListViewMatchers.hasListCell(123450.6789));
+        FxAssert.verifyThat("#currentNumber", TextInputControlMatchers.hasText(""));
     }
 }

@@ -9,6 +9,7 @@ import edu.duke.ece651.model.RPNStack;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -32,6 +33,9 @@ public class App extends Application {
     GridPane gp = loader.load();
     Scene scene = new Scene(gp,640,480);
     scene.getStylesheets().add(cssResource.toString());
+    @SuppressWarnings("unchecked")
+    ListView<Double> operands = (ListView<Double>)scene.lookup("#rpnstack");
+    operands.setItems(model.getList());
     stage.setScene(scene);
     stage.show();
   }
