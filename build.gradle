@@ -45,6 +45,6 @@ test {
 }
 
 javafx {
-    version = "14"
+    version = "16"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }

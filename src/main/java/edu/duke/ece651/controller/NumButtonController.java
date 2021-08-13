@@ -37,4 +37,20 @@ public class NumButtonController {
     public void onEnter(ActionEvent ae){
         pushCurrentNumIfAny();
     }
+    public void onPlus(ActionEvent ae){
+        pushCurrentNumIfAny();
+        model.add();
+    }
+    public void onTimes(ActionEvent ae){
+        pushCurrentNumIfAny();
+        model.times();
+    }
+    public void onDivide(ActionEvent ae){
+        pushCurrentNumIfAny();
+        model.divide();
+    }
+    public void onSubtract(ActionEvent ae){
+        pushCurrentNumIfAny();
+        model.subtract();
+    }
 }

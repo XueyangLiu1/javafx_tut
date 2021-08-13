@@ -42,4 +42,61 @@ class AppTest {
         FxAssert.verifyThat("#rpnstack", ListViewMatchers.hasListCell(123450.6789));
         FxAssert.verifyThat("#currentNumber", TextInputControlMatchers.hasText(""));
     }
+
+    private void clickButtonsFor(String str,FxRobot robot){
+        for(char digit : str.toCharArray()){
+            if(digit == '.'){
+                robot.clickOn("#dot");
+            }else{
+                robot.clickOn(""+digit);
+            }
+        }
+    }
+
+    void test_button_helper(FxRobot robot, String btnName, String inp1,
+                            String inp2, double ans, boolean useEnter){
+        clickButtonsFor(inp1, robot);
+        robot.clickOn("#Enter");
+        clickButtonsFor(inp2, robot);
+        if(useEnter) {
+            robot.clickOn("#Enter");
+        }
+        robot.clickOn(btnName);
+        FxAssert.verifyThat("#currentNumber", TextInputControlMatchers.hasText(""));
+        FxAssert.verifyThat("#rpnstack", ListViewMatchers.hasItems(1));
+        FxAssert.verifyThat("#rpnstack", ListViewMatchers.hasListCell(ans));
+    }
+    @Test
+    void test_plusButton_wo_enter(FxRobot robot) {
+        test_button_helper(robot, "#plus", "123.5", "234.25", 357.75, false);
+    }
+    @Test
+    void test_plusButton_w_enter(FxRobot robot) {
+        test_button_helper(robot, "#plus", "93.7", "24.3", 118, true);
+    }
+
+    @Test
+    void test_subtractButton_wo_enter(FxRobot robot) {
+        test_button_helper(robot, "#minus", "123.5", "234.25", -110.75, false);
+    }
+    @Test
+    void test_subtractButton_w_enter(FxRobot robot) {
+        test_button_helper(robot, "#minus", "93.7", "24.3", 69.4, true);
+    }
+    @Test
+    void test_timesButton_wo_enter(FxRobot robot) {
+        test_button_helper(robot, "#times", "123.5", "234.25", 28929.875, false);
+    }
+    @Test
+    void test_timesButton_w_enter(FxRobot robot) {
+        test_button_helper(robot, "#times", "93", "24.3", 2259.9, true);
+    }
+    @Test
+    void test_divButton_wo_enter(FxRobot robot) {
+        test_button_helper(robot, "#div", "123.5", "0.25", 494, false);
+    }
+    @Test
+    void test_divButton_w_enter(FxRobot robot) {
+        test_button_helper(robot, "#div", "2259.9", "24.3", 93, true);
+    }
 }
